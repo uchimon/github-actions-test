@@ -34,7 +34,7 @@ jobs:
         env:
 #          SLACK_CHANNEL: uchi-test
           SLACK_TITLE: デプロイ完了したよ🎉
-          MSG_MINIMAL: true
+          MSG_MINIMAL: actions url
           SLACK_COLOR: good
   
       # テスト失敗時はこちらのステップが実行される
