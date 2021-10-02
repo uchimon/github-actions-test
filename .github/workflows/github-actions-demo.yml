@@ -7,6 +7,9 @@ on:
 
 concurrency: github-actions-demo
 
+env:
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -21,5 +24,23 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: sleep 30
+#      - run: sleep 30
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      # テスト成功時はこちらのステップが実行される
+      - name: Slack Notification on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_CHANNEL: uchi-test
+          SLACK_TITLE: Test Success
+          SLACK_COLOR: good
+  
+      # テスト失敗時はこちらのステップが実行される
+      - name: Slack Notification on Failure
+        uses: rtCamp/action-slack-notify@v2.0.2
+        if: failure()
+        env:
+          SLACK_CHANNEL: uchi-test
+          SLACK_TITLE: Test Failure
+          SLACK_COLOR: danger
