@@ -50,5 +50,7 @@ jobs:
         if: failure()
         env:
 #          SLACK_CHANNEL: uchi-test
-          SLACK_TITLE: Test Failure
+          SLACK_TITLE: デプロイ失敗
+          MSG_MINIMAL: actions url
           SLACK_COLOR: danger
+
