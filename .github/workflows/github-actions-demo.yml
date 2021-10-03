@@ -27,8 +27,9 @@ jobs:
         uses: actions/checkout@v2
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: generate COMMIT_HASH file
-        run: echo $GITHUB_SHA | cut -b 1-6 | { read SHA; echo "$SHA ($(date '+%Y-%m-%d %T'))"; } > COMMIT_HASH
+      - name: Generate COMMIT_HASH
+#        run: echo $GITHUB_SHA | cut -b 1-6 | { read SHA; echo "$SHA ($(date '+%Y-%m-%d %T'))"; } > COMMIT_HASH
+        run: echo $GITHUB_SHA | cut -b 1-6 | { read SHA; echo "$SHA ($(date '+%Y-%m-%d %T'))"; }
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
