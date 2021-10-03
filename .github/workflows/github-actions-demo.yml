@@ -29,7 +29,8 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Generate COMMIT_HASH
 #        run: echo $GITHUB_SHA | cut -b 1-6 | { read SHA; echo "$SHA ($(date '+%Y-%m-%d %T'))"; } > COMMIT_HASH
-        run: echo $GITHUB_SHA | cut -b 1-6 | { read SHA; echo "$SHA ($(date '+%Y-%m-%d %T'))"; }
+        run: echo $GITHUB_SHA | cut -b 1-6 | { read SHA; echo "$SHA ($(TZ=JST-9 date '+%Y-%m-%d %T' %Z))"; }
+      - run: date
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
