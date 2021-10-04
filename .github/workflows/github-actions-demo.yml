@@ -36,6 +36,7 @@ jobs:
           ls ${{ github.workspace }}
 #      - run: sleep 30
       - run: cat COMMIT_HASH
+      - run: ls -la
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
       # テスト成功時はこちらのステップが実行される
